@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
+/* ─── Figma Design Tokens ─── */
 :root {
+  color-scheme: light;
+
+  /* Semantic */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #141414;
+  --surface: #ffffff;
+  --muted: #8a8a8a;
+  --border: #d1d1d1;
+  --accent: #4f46e5;
+
+  /* Purple palette */
+  --color-purple-50: #eeedfc;
+  --color-purple-100: #dddbfa;
+  --color-purple-200: #b7b3f4;
+  --color-purple-300: #958fef;
+  --color-purple-400: #736bea;
+  --color-purple-500: #4f46e5;
+  --color-purple-600: #281ed2;
+  --color-purple-700: #1e169d;
+  --color-purple-800: #130e67;
+  --color-purple-900: #0a0836;
+  --color-purple-950: #05041b;
+
+  /* Greyscale palette */
+  --color-grey-50: #ffffff;
+  --color-grey-100: #f5f5f5;
+  --color-grey-200: #d1d1d1;
+  --color-grey-300: #adadad;
+  --color-grey-400: #8a8a8a;
+  --color-grey-500: #666666;
+  --color-grey-600: #525252;
+  --color-grey-700: #3d3d3d;
+  --color-grey-800: #292929;
+  --color-grey-900: #141414;
+  --color-grey-950: #0a0a0a;
+
+  /* Helper / status */
+  --color-error: #f4161a;
+  --color-error-light: #f66466;
+  --color-warning: #f4a316;
+  --color-success: #1dc31d;
+  --color-success-light: rgba(29, 195, 29, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+
+  /* Purple */
+  --color-purple-50: var(--color-purple-50);
+  --color-purple-100: var(--color-purple-100);
+  --color-purple-200: var(--color-purple-200);
+  --color-purple-300: var(--color-purple-300);
+  --color-purple-400: var(--color-purple-400);
+  --color-purple-500: var(--color-purple-500);
+  --color-purple-600: var(--color-purple-600);
+  --color-purple-700: var(--color-purple-700);
+  --color-purple-800: var(--color-purple-800);
+  --color-purple-900: var(--color-purple-900);
+  --color-purple-950: var(--color-purple-950);
+
+  /* Greyscale */
+  --color-grey-50: var(--color-grey-50);
+  --color-grey-100: var(--color-grey-100);
+  --color-grey-200: var(--color-grey-200);
+  --color-grey-300: var(--color-grey-300);
+  --color-grey-400: var(--color-grey-400);
+  --color-grey-500: var(--color-grey-500);
+  --color-grey-600: var(--color-grey-600);
+  --color-grey-700: var(--color-grey-700);
+  --color-grey-800: var(--color-grey-800);
+  --color-grey-900: var(--color-grey-900);
+  --color-grey-950: var(--color-grey-950);
+
+  /* Status */
+  --color-error: var(--color-error);
+  --color-error-light: var(--color-error-light);
+  --color-warning: var(--color-warning);
+  --color-success: var(--color-success);
+  --color-success-light: var(--color-success-light);
+
+  --font-sans: var(--font-inter), var(--font-noto-sans), Arial, sans-serif;
+  --font-display: var(--font-noto-sans), Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 22%, white);
 }
