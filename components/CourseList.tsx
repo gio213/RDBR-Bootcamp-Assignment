@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Course } from "@/types/course";
-import { CourseCard } from "./ui/CourseCard";
+import { CourseCard } from "./CourseCard";
 import { Pagination } from "./ui/Pagination";
 
 interface CourseListProps {
