@@ -4,8 +4,8 @@ interface PageContainerProps {
 
 export function PageContainer({ children }: PageContainerProps) {
   return (
-    <div className="mx-auto max-w-391.5 flex flex-col gap-16 py-16 px-4">
+    <main className="mx-auto w-full max-w-391.5 px-4 sm:px-8 lg:px-44.25 flex flex-col gap-16 py-16">
       {children}
-    </div>
+    </main>
   );
 }
