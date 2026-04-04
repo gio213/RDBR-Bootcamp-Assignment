@@ -36,8 +36,13 @@ export function HeroSlider({
   const slide = slides[active];
 
   return (
-    <section className={cn("relative w-full overflow-hidden rounded-[30px]", className)}>
-      <div className="relative h-[276px] w-full">
+    <section
+      className={cn(
+        "relative w-full overflow-hidden rounded-2xl sm:rounded-[20px] lg:rounded-[30px]",
+        className,
+      )}
+    >
+      <div className="relative h-70 w-full sm:h-80 lg:h-69">
         {/* Background image */}
         <Image
           key={slide.image}
@@ -53,13 +58,13 @@ export function HeroSlider({
         <div className="absolute inset-0 bg-linear-to-r from-black/55 via-black/25 to-transparent" />
 
         {/* Content */}
-        <div className="relative flex h-[276px] flex-col justify-center gap-4 px-14">
-          <h1 className="font-(family-name:--font-noto-sans) max-w-[520px] text-[36px] font-semibold leading-tight text-white">
+        <div className="relative flex h-70 flex-col justify-center gap-3 px-6 sm:h-80 sm:gap-4 sm:px-8 lg:h-69 lg:px-14">
+          <h1 className="font-(family-name:--font-noto-sans) max-w-70 text-[22px] font-semibold leading-tight text-white sm:max-w-100 sm:text-[28px] lg:max-w-130 lg:text-[36px]">
             {slide.title}
           </h1>
 
           {slide.description && (
-            <p className="max-w-[460px] text-[14px] leading-[1.6] text-white/80">
+            <p className="max-w-65 text-[12px] leading-[1.6] text-white/80 sm:max-w-95 sm:text-[13px] lg:max-w-115 lg:text-[14px]">
               {slide.description}
             </p>
           )}
@@ -72,7 +77,7 @@ export function HeroSlider({
         </div>
 
         {/* Bottom controls row */}
-        <div className="absolute bottom-5 flex w-full items-center justify-between px-14">
+        <div className="absolute bottom-3 flex w-full items-center justify-between px-6 sm:bottom-4 sm:px-8 lg:bottom-5 lg:px-14">
           {/* Dot indicators — centered */}
           <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
             {slides.map((_, i) => (
