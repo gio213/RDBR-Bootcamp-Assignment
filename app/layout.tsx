@@ -36,7 +36,14 @@ export default function RootLayout({
       className={`${inter.variable} ${notoSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full  flex flex-col">
-        <Header />
+        <Header
+          isAuth={true}
+          user={{
+            name: "Giorgi",
+            avatarUrl:
+              "https://gravatar.com/avatar/5bf39e5af5c6b623282f240568b3eee3?s=400&d=robohash&r=x",
+          }}
+        />
         <main className="flex-1 bg-background">{children}</main>
         <Footer />
       </body>

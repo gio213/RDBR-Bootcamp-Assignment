@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Course } from "@/types/course";
 import { CourseCard } from "./CourseCard";
-import { Pagination } from "./ui/Pagination";
+import { Pagination } from "./Pagination";
 
 interface CourseListProps {
   courses: Course[];

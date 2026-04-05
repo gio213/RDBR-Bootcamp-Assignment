@@ -1,4 +1,4 @@
-import { PageContainer } from "@/components/ui/PageContainer";
+import { PageContainer } from "@/components/PageContainer";
 import { CourseDetailLeft } from "../CourseDetailLeftSide";
 
 export default async function Page({
