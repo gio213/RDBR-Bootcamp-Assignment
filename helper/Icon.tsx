@@ -165,6 +165,58 @@ function PersonIcon() {
   );
 }
 
+function CloseIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M6 6l12 12M18 6L6 18"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function EmptyPackageIcon() {
+  return (
+    <svg
+      width="132"
+      height="132"
+      viewBox="0 0 132 132"
+      fill="none"
+      aria-hidden="true"
+      className="text-grey-200"
+    >
+      <path
+        d="M66 18 97 33.5v31L66 80 35 64.5v-31L66 18Z"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M35 33.5 66 49l31-15.5M66 49v31"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M48 24.5 79 40M53.5 73 35 64.5M97 64.5 78.5 73"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export {
   CalendarIcon,
   StarIcon,
@@ -174,4 +226,6 @@ export {
   SparkleIcon,
   BookIcon,
   PersonIcon,
+  CloseIcon,
+  EmptyPackageIcon,
 };

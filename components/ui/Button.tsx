@@ -1,52 +1,67 @@
-import { type ButtonHTMLAttributes, forwardRef } from "react";
+import { type ButtonHTMLAttributes, type ReactNode, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "outline" | "ghost";
 
 interface CTAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
 }
 
+const baseStyles = [
+  "inline-flex shrink-0 items-center justify-center whitespace-nowrap font-(family-name:--font-inter) font-medium",
+  "transition-colors duration-200",
+  "disabled:cursor-not-allowed",
+].join(" ");
+
 const variants: Record<Variant, string> = {
-  // Figma: bg Purple/500, text white, px-25 py-17, rounded-8, Inter Medium 20px
   primary: [
-    "bg-purple-500 text-white rounded-lg px-[25px] py-[17px] text-[20px] font-medium",
+    "gap-[10px] rounded-lg bg-purple-500 px-[25px] py-[17px] text-[20px] leading-none text-white",
     "hover:bg-purple-600",
     "active:bg-purple-700",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500",
-    "disabled:bg-grey-300 disabled:text-grey-400 disabled:cursor-not-allowed",
+    "focus-visible:bg-purple-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-100",
+    "disabled:bg-grey-300 disabled:text-grey-400",
   ].join(" "),
-  // Figma: border Purple/300, text Purple/500, px-16 py-12, rounded-8, Inter Medium 20px
   outline: [
-    "border border-purple-300 text-purple-500 rounded-lg px-[16px] py-[12px] text-[20px] font-medium bg-transparent",
-    "hover:border-purple-500 hover:bg-purple-50",
-    "active:border-purple-600 active:text-purple-600",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500",
-    "disabled:border-grey-400 disabled:text-grey-400 disabled:bg-grey-300 disabled:cursor-not-allowed",
+    "gap-[2px] rounded-lg border-2 border-purple-300 bg-transparent px-[16px] py-[12px] text-[20px] leading-none text-purple-500",
+    "hover:border-purple-600 hover:bg-purple-600 hover:text-white",
+    "active:border-purple-700 active:bg-purple-700 active:text-white",
+    "focus-visible:border-purple-700 focus-visible:bg-purple-700 focus-visible:text-white focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-2 focus-visible:outline-purple-100",
+    "disabled:border-grey-400 disabled:bg-grey-300 disabled:text-grey-400",
   ].join(" "),
-  // Figma: stroke Purple/500 (no fill), text Purple/500, px-12 py-12, no radius, Inter Medium 16px
   ghost: [
-    "border border-purple-500 text-purple-500 px-[12px] py-[12px] text-[16px] font-medium bg-transparent",
-    "hover:bg-purple-50",
-    "active:bg-purple-100",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500",
-    "disabled:border-grey-300 disabled:text-grey-300 disabled:cursor-not-allowed",
+    "gap-[10px] border-b border-purple-500 bg-transparent px-[12px] py-[12px] text-[16px] leading-6 text-purple-500",
+    "hover:border-purple-600 hover:text-purple-600",
+    "active:border-purple-700 active:text-purple-700",
+    "focus-visible:border-purple-700 focus-visible:text-purple-700 focus-visible:outline-2 focus-visible:outline-dashed focus-visible:outline-offset-2 focus-visible:outline-purple-700",
+    "disabled:border-grey-300 disabled:text-grey-300",
   ].join(" "),
 };
 
 const CTAButton = forwardRef<HTMLButtonElement, CTAButtonProps>(
-  ({ variant = "primary", className, children, ...props }, ref) => {
+  (
+    {
+      variant = "primary",
+      className,
+      children,
+      leftIcon,
+      rightIcon,
+      type,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <button
         ref={ref}
-        className={cn(
-          "inline-flex items-center justify-center font-(family-name:--font-inter) transition duration-200",
-          variants[variant],
-          className,
-        )}
+        type={type ?? "button"}
+        className={cn(baseStyles, variants[variant], className)}
         {...props}
       >
-        {children}
+        {leftIcon ? <span aria-hidden="true">{leftIcon}</span> : null}
+        {children ? <span>{children}</span> : null}
+        {rightIcon ? <span aria-hidden="true">{rightIcon}</span> : null}
       </button>
     );
   },

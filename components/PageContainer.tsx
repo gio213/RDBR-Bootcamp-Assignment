@@ -1,4 +1,4 @@
-import { Breadcrumbs } from "./Breadcrumbs";
+import { Breadcrumbs } from "./ui/Breadcrumbs";
 
 interface PageContainerProps {
   children: React.ReactNode;

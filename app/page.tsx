@@ -1,6 +1,6 @@
 import CourseList from "@/components/CourseList";
+import { PageContainer } from "@/components/PageContainer";
 import { HeroSlider } from "@/components/ui/HeroSlider";
-import { PageContainer } from "@/components/ui/PageContainer";
 import { Spinner } from "@/components/ui/Spinner";
 import { sliderData } from "@/data/slider-data";
 import { Suspense } from "react";
