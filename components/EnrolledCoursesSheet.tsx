@@ -5,9 +5,9 @@ import { useEffect, useRef } from "react";
 import { CourseCard, type ScheduleInfo } from "@/components/CourseCard";
 import { cn } from "@/lib/utils";
 import type { Course } from "@/types/course";
-import { CTAButton } from "./Button";
-import { Spinner } from "./Spinner";
 import { CloseIcon, EmptyPackageIcon } from "@/helper/Icon";
+import { Spinner } from "./ui/Spinner";
+import { CTAButton } from "./ui/Button";
 
 interface EnrolledCoursesSheetProps {
   open: boolean;
