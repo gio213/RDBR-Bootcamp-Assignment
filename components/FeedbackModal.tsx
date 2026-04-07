@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { CTAButton } from "./Button";
+import { CTAButton } from "./ui/Button";
 
 // Figma: Modal_Icons has Complete / Success / Warning / User variants
 export type FeedbackVariant = "success" | "complete" | "warning" | "user";
