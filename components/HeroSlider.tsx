@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { CTAButton } from "./Button";
 import Link from "next/link";
 import { HeroSliderType, sliderData } from "@/data/slider-data";
+import { CTAButton } from "./ui/Button";
 
 // NOTE: slider-data items must now have `image: string` as a URL/path,
 // not a Tailwind bg-class. E.g.: image: "/images/slide-1.jpg"

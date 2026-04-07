@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Noto_Sans } from "next/font/google";
-import { Header } from "@/components/ui/Header";
-import { Footer } from "@/components/ui/Footer";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
+import { getCurrentUser } from "@/lib/auth";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,11 +26,13 @@ export const metadata: Metadata = {
   description: "Redberry Bootcamp XI",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const currentUser = await getCurrentUser();
+
   return (
     <html
       lang="en"
@@ -37,10 +40,11 @@ export default function RootLayout({
     >
       <body className="min-h-full  flex flex-col">
         <Header
-          isAuth={true}
+          isAuth={!!currentUser}
           user={{
-            name: "Giorgi",
+            name: currentUser?.fullName || "Giorgi",
             avatarUrl:
+              currentUser?.avatar ||
               "https://gravatar.com/avatar/5bf39e5af5c6b623282f240568b3eee3?s=400&d=robohash&r=x",
           }}
         />

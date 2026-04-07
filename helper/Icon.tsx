@@ -217,6 +217,44 @@ function EmptyPackageIcon() {
   );
 }
 
+function BackArrowIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      className="size-4"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.25 4.75L6.75 9.25M6.75 9.25L11.25 13.75M6.75 9.25H20.25M5.21 19.21a1.5 1.5 0 001.42 0A9.753 9.753 0 0112 21c2.83 0 5.52-1.1 7.79-2.79a1.5 1.5 0 00-1.42-2.62A7.728 7.728 0 0012 19.25c-2.16 0-4.15-.8-5.79-2.09z"
+      />
+    </svg>
+  );
+}
+
+function UploadIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6 text-grey-400"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 8.25m0 0L7.5 12m4.5-3v9"
+      />
+    </svg>
+  );
+}
+
 export {
   CalendarIcon,
   StarIcon,
@@ -228,4 +266,6 @@ export {
   PersonIcon,
   CloseIcon,
   EmptyPackageIcon,
+  BackArrowIcon,
+  UploadIcon,
 };

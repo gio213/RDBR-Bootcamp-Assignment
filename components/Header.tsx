@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import {  useState } from "react";
+import { useState } from "react";
 import { LogoIcon } from "@/helper/Icon";
 import type { Course } from "@/types/course";
-import UserAvatar from "../UserProfileAvatar";
-import NavLink from "../NavLink";
-import { CTAButton } from "./Button";
+import UserAvatar from "./UserProfileAvatar";
+import NavLink from "./NavLink";
+import { CTAButton } from "./ui/Button";
 import { EnrolledCoursesSheet } from "./EnrolledCoursesSheet";
+import LoginForm from "@/forms/login/LoginForm";
+import { RegisterForm } from "@/forms/register/RegisterForm";
 
 interface HeaderProps {
   isAuth?: boolean;
@@ -16,8 +18,10 @@ interface HeaderProps {
 
 export function Header({ isAuth = false, user }: HeaderProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [enrolledCourses, setEnrolledCourses] = useState<Course[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [enrolledCourses] = useState<Course[]>([]);
+  const [isLoading] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   // useEffect(() => {
   //   if (!isAuth || !isSheetOpen || enrolledCourses.length > 0 || isLoading) {
@@ -85,16 +89,21 @@ export function Header({ isAuth = false, user }: HeaderProps) {
               </>
             ) : (
               <div className="flex items-center gap-3">
-                <Link href="/login">
-                  <CTAButton className="h-15 w-28.5" variant="outline">
-                    Log In
-                  </CTAButton>
-                </Link>
-                <Link href="/register">
-                  <CTAButton className="h-15 w-31.25" variant="primary">
-                    Sign Up
-                  </CTAButton>
-                </Link>
+                <CTAButton
+                  className="h-15 w-28.5"
+                  variant="outline"
+                  onClick={() => setIsLoginOpen(true)}
+                >
+                  Log In
+                </CTAButton>
+
+                <CTAButton
+                  className="h-15 w-31.25"
+                  variant="primary"
+                  onClick={() => setIsRegisterOpen(true)}
+                >
+                  Sign Up
+                </CTAButton>
               </div>
             )}
           </div>
@@ -112,6 +121,25 @@ export function Header({ isAuth = false, user }: HeaderProps) {
           sessionType: "Live",
         }}
         loading={isLoading}
+      />
+      <LoginForm
+        open={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onSuccess={() => setIsLoginOpen(false)}
+        onSignUpClick={() => {
+          setIsLoginOpen(false);
+          setIsRegisterOpen(true);
+        }}
+      />
+
+      <RegisterForm
+        open={isRegisterOpen}
+        onClose={() => setIsRegisterOpen(false)}
+        onLoginClick={() => {
+          setIsRegisterOpen(false);
+          setIsLoginOpen(true);
+        }}
+        onSuccess={() => setIsRegisterOpen(false)}
       />
     </>
   );

@@ -1,14 +1,14 @@
 import CourseList from "@/components/CourseList";
+import { HeroSlider } from "@/components/HeroSlider";
 import { PageContainer } from "@/components/PageContainer";
-import { HeroSlider } from "@/components/ui/HeroSlider";
 import { Spinner } from "@/components/ui/Spinner";
 import { sliderData } from "@/data/slider-data";
+import { api } from "@/lib/api";
+import { Course } from "@/types/course";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const courses = await fetch(
-    "https://api.redclass.redberryinternship.ge/api/courses/featured",
-  ).then((res) => res.json());
+  const courses = await api.get<{ data: Course[] }>("courses/featured");
   return (
     <PageContainer>
       <HeroSlider slides={sliderData} />
